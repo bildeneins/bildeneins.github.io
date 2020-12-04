@@ -28,10 +28,13 @@ var reversed = false;
           let now = new Date()
             if (firstTime === -1) {
               firstTime = new Date()
+              msgel.innerHTML = '<button class="btn btn-success btn-lg btn3d">残量あり</button>';
             } else {
               if (now.getTime() - firstTime.getTime() >= 1000 * limsec) {
                 msgel.innerHTML = '<button class="btn btn-success btn-lg btn3d active">残量なし</button>';
                 isOff = false;
+              } else {
+                msgel.innerHTML = '<button class="btn btn-success btn-lg btn3d">残量あり</button>';
               }
             }
             subel.innerHTML = `<h2>感知中...${Math.floor((now.getTime() - firstTime.getTime())/1000)}秒</h2>`;
@@ -49,11 +52,12 @@ var reversed = false;
   
     document.addEventListener('DOMContentLoaded', event => {
       let btn = document.querySelector('#reset');
+      var msgel = document.getElementById('display')
       btn.addEventListener('click', function() {
         firstTime = -1;
         isOff = true;
       })
-      
+
       let connectButton = document.querySelector('#connect');
    
       function connect() {
