@@ -4,7 +4,6 @@ var limit = 5.0;
 var reversed = false;
 (function() {
     'use strict';
-    console.log(fu, s)
     const isOn = function(val) {
       if (!reversed) {
         return val > 20
@@ -12,6 +11,7 @@ var reversed = false;
         return !(val > 20)
       }
     }
+
 
     const onReceived = data => {
         var msgel = document.getElementById('display')
@@ -25,19 +25,16 @@ var reversed = false;
         reversed = document.getElementById('reverse').checked
 
         if (isOn(val)) {
-            if (!isOff) {
-              return;
-            }
-            subel.innerHTML = '<h2>感知中...</h2>';
+          let now = new Date()
             if (firstTime === -1) {
               firstTime = new Date()
             } else {
-              let now = new Date()
-              if (now.getTime() - firstTime.getTime() >= 1000 * limsec - 10) {
+              if (now.getTime() - firstTime.getTime() >= 1000 * limsec) {
                 msgel.innerHTML = '<button class="btn btn-success btn-lg btn3d active">残量なし</button>';
                 isOff = false;
               }
             }
+            subel.innerHTML = `<h2>感知中...${Math.floor((now.getTime() - firstTime.getTime())/1000)}秒</h2>`;
         } else {
             isOff = true;
             firstTime = -1;
@@ -51,6 +48,12 @@ var reversed = false;
     let textEncoder = new TextEncoder();
   
     document.addEventListener('DOMContentLoaded', event => {
+      let btn = document.querySelector('#reset');
+      btn.addEventListener('click', function() {
+        firstTime = -1;
+        isOff = true;
+      })
+      
       let connectButton = document.querySelector('#connect');
    
       function connect() {
