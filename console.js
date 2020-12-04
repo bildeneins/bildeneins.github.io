@@ -65,7 +65,7 @@ var reversed = false;
         port.connect().then(() => {
           console.log(port);
           console.log('Connected.');
-          connectButton.textContent = 'Arduinoとの接続解除';
+          // connectButton.textContent = 'Arduinoとの接続解除';
           port.onReceive = onReceived
           port.onReceiveError = error => {
             console.log('Receive error: ' + error);
@@ -77,7 +77,7 @@ var reversed = false;
   
       connectButton.addEventListener('click', function() {
         if (port) {
-          port.disconnect();
+          // port.disconnect();
           connectButton.textContent = 'Arduinoと接続する';
         } else {
           serial.requestPort().then(selectedPort => {
