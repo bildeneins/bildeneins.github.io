@@ -17,12 +17,13 @@ var input_list = Array(3);
         var msgel = document.getElementById('display')
         var subel = document.getElementById('sub')
         var limsec = document.getElementById('limit-sec').value
+        var sensor = Number(document.getElementById('sensor').value)
 
         let textDecoder = new TextDecoder();
         input_list = textDecoder.decode(data).split(',').map(item => Number(item))
         console.log(input_list) // A0, A1, A2
 
-        const val = input_list[0]
+        const val = input_list[sensor]
 
         reversed = document.getElementById('reverse').checked
 
