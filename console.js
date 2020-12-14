@@ -1,14 +1,14 @@
 var firstTime = -1;
 var isOff = true;
-var limit = 5.0;
 var reversed = false;
+var input_list = Array(3);
 (function() {
     'use strict';
     const isOn = function(val) {
       if (!reversed) {
-        return val > 20
-      } else {
         return !(val > 20)
+      } else {
+        return val > 20
       }
     }
 
@@ -19,8 +19,10 @@ var reversed = false;
         var limsec = document.getElementById('limit-sec').value
 
         let textDecoder = new TextDecoder();
-        console.log(textDecoder.decode(data));
-        const val = Number(textDecoder.decode(data))
+        input_list = textDecoder.decode(data).split(',').map(item => Number(item))
+        console.log(input_list) // A0, A1, A2
+
+        const val = input_list[0]
 
         reversed = document.getElementById('reverse').checked
 
