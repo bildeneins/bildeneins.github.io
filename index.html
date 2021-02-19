@@ -1,117 +1,45 @@
 <!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <title>センサー読み取りデモ</title>
-        <!-- <script src="hterm_all.js"></script> -->
-        <script src="serial.js"></script>
-        <script src="console.js"></script>
-        <style>
-            #display {
-                background-color: #f2f2f2;
-                text-align: center;
-                padding: 3.75rem;
-                vertical-align: top;
-                border-top: 1px solid #dee2e6;
-            }
-            .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active, .show > .btn-success.dropdown-toggle {
-                color: #fff;
-                background-color: #1e7e34;
-                border-color: #1c7430;
-            }
-            .btn {
-                user-select: none;
-            }
-            button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
-                cursor: pointer;
-            }
-            .btn3d.btn-success:active, .btn3d.btn-success.active {
-                box-shadow: 0 0 0 1px #30cd00 inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-                background-color: #78d739;
-            }
-            .btn3d:active, .btn3d.active {
-                top: 2px;
-            }
-            .cover .btn-lg {
-                padding: .75rem 1.25rem;
-                font-weight: 700;
-            }
-            .btn3d.btn-success {
-                box-shadow: 0 0 0 1px #31c300 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #5eb924, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-                background-color: #78d739;
-            }
-            .btn3d {
-                position: relative;
-                top: -6px;
-                border: 0;
-                transition: all 40ms linear;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                margin-left: 2px;
-                margin-right: 2px;
-                color: #fff;
-                font-weight: bold;
-            }
-            .btn-lg, .btn-group-lg > .btn {
-                padding: 0.5rem 1rem;
-                font-size: 1.25rem;
-                line-height: 1.5;
-                border-radius: 0.3rem;
-            }
-            .settings {
-                margin-top: 50px;
-            }
-            .setin {
-                background-color: #f2f2f2;
-                padding: 5px;
-            }
-            .setin > div {
-                margin: 5px;
-            }
-            .ar {
-                padding-top: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>粗材</h1>
-        <div id="display">
-            <button class="btn btn-success btn-lg btn3d">残量あり</button>
-        </div>
-        <div id="sub">
-            <h2>感知なし</h2>
-        </div>
-        <div class="settings">
-            <h3>デモ設定</h3>
-            <div class="setin">
-                <div>
-                    <label>
-                        センサー感知許容秒数
-                        <input id="limit-sec" type="number" value="5">
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input id="reverse" type="checkbox">
-                        入力信号を反転する
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        対象センサー
-                        <select id="sensor">
-                            <option value="0" selected>A0</option>
-                            <option value="1"">A1</option>
-                            <option value="2">A2</option>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <button id="reset">入力情報をリセットする</button>
-                </div>
-                <div class="ar">
-                    <button id="connect">Arduinoと接続する</button>
-                </div>
-            </div>
-        </div>
-    </body>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    Fore more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="flutter_app">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>flutter_app</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=3374839297');
+      });
+    }
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
 </html>
